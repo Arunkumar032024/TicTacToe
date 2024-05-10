@@ -7,3 +7,122 @@
     box-sizing: border-box;
     font-family: "Poetsen One", sans-serif; 
 }
+
+body{
+    width: 100%;
+    min-height: 100vh;
+    background-color: #131111;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container{
+    width: 100%;
+    max-width: 300px;
+    padding: 15px;
+    
+}
+
+.container h1{
+    text-align: center;
+    color: #ddd;
+    margin-bottom: 1rem;
+}
+.symbol-box{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem auto;
+}
+.symbol-box > p{
+    font-size: 1rem;
+    font-weight: bold;
+    color: #aaa;
+}
+.symbol-box .x{
+    color: #ffff80;
+}
+.symbol-box .o{
+    color: #ff0080;
+}
+
+.play-again{
+    cursor: pointer;
+    padding: 5px;
+    background-color: #ddd;
+    border-radius: 50%;
+    color: #131111;
+}
+
+.buttons{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+    margin: 1rem auto;
+}
+.buttons button{
+    width: 80px;
+    height: 80px;
+    background-color: #131111;
+    outline: none;
+    border: none;
+    box-shadow: 2px 2px #000;
+    border-radius: 5px;
+    font-size: 3rem;
+    color: #fff;
+    filter: brightness(1.5);
+}
+
+.controls{
+    display: flex;
+    justify-content: space-between;
+}
+
+.controls button{
+    width: 80px;
+    height: 50px;
+    border-radius: 5px;
+    outline: none;
+    background-color: transparent;
+}
+.controls button p{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    justify-content: center;
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+.controls button:nth-child(1){
+    color: #ffff80;
+}
+.controls button:nth-child(2){
+    color: #fff;
+    text-transform: uppercase;
+}
+.controls button:nth-child(3){
+    color: #ff0080;
+}
+
+.container > p{
+    text-align: center;
+    margin: 1rem auto;
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #ddd;
+}
+.container .choose-player-btn{
+    display: block;
+    margin: 1rem auto;
+    padding: 8px 20px;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    border-radius: 4px;
+}
+
+.container .choose-player-btn:active{
+    transform: scale(0.98);
+}
