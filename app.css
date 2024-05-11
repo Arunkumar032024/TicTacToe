@@ -47,7 +47,7 @@ body{
     color: #ff0080;
 }
 
-.play-again{
+.restart{
     cursor: pointer;
     padding: 5px;
     background-color: #ddd;
@@ -74,9 +74,7 @@ body{
     filter: brightness(1.5);
     cursor: pointer;
 }
-.buttons button.pointer-none{
-    pointer-events: none;
-}
+
 .controls{
     display: flex;
     justify-content: space-between;
@@ -97,6 +95,7 @@ body{
     font-size: 9px;
     font-weight: 700;
     text-transform: uppercase;
+    letter-spacing: 1.5px;
 }
 .controls button:nth-child(1){
     color: #ffff80;
@@ -130,6 +129,31 @@ body{
     transform: scale(0.98);
 }
 
+.result{
+    background-color: #131111;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 30px;
+    color: #fff;
+    text-align: center;
+}
+.result h3{
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.continue{
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
 .hide{
     display: none;
+}
+
+.pointer-none{
+    pointer-events: none;
 }

@@ -16,8 +16,8 @@
         <h1>Tic Tac Toe</h1>
         <div class="symbol-box">
             <p><span class="x">X</span> <span class="o">O</span></p>
-            <p><span class="turn">X</span> Turn</p>
-            <button class="play-again"><i class="fa-solid fa-arrow-rotate-right"></i></button>
+            <p class="player-turn hide"><span class="turn"></span>'s Turn</p>
+            <button class="restart pointer-none"><i class="fa-solid fa-arrow-rotate-right">C</i></button>
         </div>
 
         <div class="buttons">
@@ -34,11 +34,15 @@
 
         <div class="controls">
             <button><p>X <span id="user-1">player1</span></p><span id="user-1-score">0</span></button>
-            <button class="ties">Ties</button>
+            <button><p><span id="tie">Ties</span></p><span id="tie-score">0</span></button>
             <button><p>O <span id="user-2">player2</span></p><span id="user-2-score">0</span></button>
         </div>
-        <p>Time left: <span class="time">7</span>s</p>
         <button class="choose-player-btn">Choose Player</button>
+    </div>
+
+    <div class="result hide">
+        <h3>Congratulation player</h3>
+        <button class="continue">Continue</button>
     </div>
     <!-- js file -->
     <script src="app.js"></script>
