@@ -47,14 +47,6 @@ body{
     color: #ff0080;
 }
 
-.restart{
-    cursor: pointer;
-    padding: 5px;
-    background-color: #ddd;
-    border-radius: 50%;
-    color: #131111;
-}
-
 .buttons{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -144,7 +136,8 @@ body{
     margin-bottom: 1rem;
 }
 
-.continue{
+.continue,
+.restart{
     padding: 8px 15px;
     border-radius: 5px;
     cursor: pointer;

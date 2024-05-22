@@ -9,3 +9,5 @@ Add favicon icon
 Complete User interface by user interface branch
 <br>
 Add win feature
+<br>
+Add continue button feature
