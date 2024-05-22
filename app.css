@@ -157,3 +157,9 @@ body{
 .pointer-none{
     pointer-events: none;
 }
+.btnO{
+    color: #ff0080;
+}
+.btnX{
+    color: #ffff80;
+}

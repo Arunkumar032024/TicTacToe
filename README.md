@@ -8,4 +8,4 @@ Add favicon icon
 <br>
 Complete User interface by user interface branch
 <br>
-Add player win functionality
+Add win feature
