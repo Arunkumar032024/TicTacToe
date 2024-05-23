@@ -1,7 +1,8 @@
 let btns = document.querySelectorAll(".buttons button"),
 resetBtn = document.querySelector(".restart"),
 turnX = true,
-[player1, player2] = ["", ""];
+[player1, player2] = ["", ""],
+[player1Score, player2Score] = [0, 0];
 const winPatterns = [
     [0, 1, 2],
     [3, 4, 5],
@@ -15,7 +16,9 @@ const winPatterns = [
 player = document.querySelector(".symbol-box .turn"),
 choosePlayerBtn = document.querySelector(".choose-player-btn"),
 resultBox = document.querySelector(".result"),
-continueBtns = document.querySelectorAll(".continue");
+continueBtns = document.querySelectorAll(".continue"),
+restartBtn = document.querySelector("#restart");
+
 
 btns.forEach( btn => {
     btn.addEventListener("click", ()=>{
@@ -45,10 +48,15 @@ function checkWinner(){
             if(pos1Val === pos2Val && pos2Val === pos3Val && pos3Val === pos1Val){
                 if(pos1Val === 'X'){
                     winnerAnnouncement(player1);
+                    player1Score++;
+                    updatePlayer1Score();
                 }else{
                     winnerAnnouncement(player2);
+                    player2Score++;
+                    updatePlayer2Score();
                 }
                 btnDisabled();
+            }else{
             }
         }
     }
@@ -74,16 +82,9 @@ choosePlayerBtn.addEventListener("click", () => {
 
 
 function winnerAnnouncement(winner){
-    if(winner !== "Tie"){
         showWinner(winner)   
         let speech = new SpeechSynthesisUtterance(`Congratulation ${winner}`);
         window.speechSynthesis.speak(speech);
-    }else{
-        showWinner(winner)   
-        let speech = new SpeechSynthesisUtterance(`Game was ${winner}`);
-        window.speechSynthesis.speak(speech);
-    }
-    
 }
 
 function btnDisabled(){
@@ -119,3 +120,25 @@ continueBtns.forEach(conBtn => {
         console.log(conBtn)
     })
 })
+
+resetBtn.addEventListener("click", ()=>{
+    let ans = confirm("If you restart the game your score will be 0:")
+    if(ans){
+        resultBox.classList.add("hide");
+        btnDisabled();
+        document.querySelector(".c-1").classList.add("pointer-none");
+        btns.forEach(btn => {btn.innerText = ""})
+        [player1Score, player2Score] = [0, 0];
+        updatePlayer1Score();
+        updatePlayer2Score();
+        choosePlayerBtn.style.display = 'block';
+    }
+})
+
+function updatePlayer1Score(){
+    document.querySelector("#user-1-score").innerText = player1Score;
+}
+function updatePlayer2Score(){
+    document.querySelector("#user-2-score").innerText = player2Score;
+}
+

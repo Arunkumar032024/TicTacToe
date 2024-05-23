@@ -11,3 +11,5 @@ Complete User interface by user interface branch
 Add win feature
 <br>
 Add continue button feature
+<br>
+Add restart btn feature
