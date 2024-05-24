@@ -49,11 +49,11 @@ function checkWinner(){
                 if(pos1Val === 'X'){
                     winnerAnnouncement(player1);
                     player1Score++;
-                    updatePlayer1Score();
+                    updateScore(player1Score, player2Score)
                 }else{
                     winnerAnnouncement(player2);
                     player2Score++;
-                    updatePlayer2Score();
+                    updateScore(player1Score, player2Score)
                 }
                 btnDisabled();
             }else{
@@ -71,9 +71,10 @@ choosePlayerBtn.addEventListener("click", () => {
         document.querySelector("#user-2").innerText = player2;
         btns.forEach(btn => { btn.classList.remove("pointer-none") });
         document.querySelector(".c-1").classList.remove("pointer-none");
-        choosePlayerBtn.style.display = 'none'
+        choosePlayerBtn.style.display = "none"
         document.querySelector(".symbol-box .player-turn").classList.remove("hide");
         player.innerText = player1;
+        btnEnabled();
     }else{
         alert("Please choose player.")
     }   
@@ -117,7 +118,6 @@ continueBtns.forEach(conBtn => {
     conBtn.addEventListener('click', ()=>{
         resultBox.classList.add("hide");
         btnEnabled();
-        console.log(conBtn)
     })
 })
 
@@ -125,20 +125,23 @@ resetBtn.addEventListener("click", ()=>{
     let ans = confirm("If you restart the game your score will be 0:")
     if(ans){
         resultBox.classList.add("hide");
+        choosePlayerBtn.style.display = "block"
         btnDisabled();
         document.querySelector(".c-1").classList.add("pointer-none");
         btns.forEach(btn => {btn.innerText = ""})
-        [player1Score, player2Score] = [0, 0];
-        updatePlayer1Score();
-        updatePlayer2Score();
-        choosePlayerBtn.style.display = 'block';
+        player1Score = 0
+        player2Score = 0
+        updateScore(player1Score, player2Score)
+        player1 = ""
+        player2 = ""
+        document.querySelector(".symbol-box .player-turn").classList.add("hide");
+        document.querySelector("#user-1").innerText = "player1"
+        document.querySelector("#user-2").innerText = "player2";
     }
 })
 
-function updatePlayer1Score(){
-    document.querySelector("#user-1-score").innerText = player1Score;
-}
-function updatePlayer2Score(){
-    document.querySelector("#user-2-score").innerText = player2Score;
+function updateScore(p1, p2){
+    document.querySelector("#user-1-score").innerText = p1;
+    document.querySelector("#user-2-score").innerText = p2;
 }
 

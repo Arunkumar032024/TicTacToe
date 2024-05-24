@@ -13,3 +13,5 @@ Add win feature
 Add continue button feature
 <br>
 Add restart btn feature
+<br>
+Add update score feature
