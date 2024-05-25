@@ -17,3 +17,5 @@ Add restart btn feature
 Add update score feature
 <br>
 Add game tie feature
+<br>
+Organize the code 

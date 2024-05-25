@@ -1,13 +1,13 @@
+/* import pt+serif font family  */
 @import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Poetsen+One&display=swap');
-
-
+/* custom style  */
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: "Poetsen One", sans-serif; 
 }
-
+/* body section style */
 body{
     width: 100%;
     min-height: 100vh;
@@ -17,18 +17,39 @@ body{
     align-items: center;
 }
 
+/* game container style  */
 .container{
     width: 100%;
     max-width: 300px;
     padding: 15px;
     
 }
-
 .container h1{
     text-align: center;
     color: #ddd;
     margin-bottom: 1rem;
 }
+.container > p{
+    text-align: center;
+    margin: 1rem auto;
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #ddd;
+}
+.container .choose-player-btn{
+    display: block;
+    margin: 1rem auto;
+    padding: 8px 20px;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    border-radius: 4px;
+}
+.container .choose-player-btn:active{
+    transform: scale(0.98);
+}
+
+/* symbol section style  */
 .symbol-box{
     display: flex;
     justify-content: space-between;
@@ -46,7 +67,9 @@ body{
 .symbol-box .o{
     color: #ff0080;
 }
+/* End symbol section style  */
 
+/* buttons section style  */
 .buttons{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -66,7 +89,9 @@ body{
     filter: brightness(1.5);
     cursor: pointer;
 }
+/* End buttons section style  */
 
+/* controls section style */
 .controls{
     display: flex;
     justify-content: space-between;
@@ -99,28 +124,10 @@ body{
 .controls button:nth-child(3){
     color: #ff0080;
 }
+/* End controls section style */
+/* End game container style  */
 
-.container > p{
-    text-align: center;
-    margin: 1rem auto;
-    font-size: 1.125rem;
-    font-weight: 700;
-    color: #ddd;
-}
-.container .choose-player-btn{
-    display: block;
-    margin: 1rem auto;
-    padding: 8px 20px;
-    cursor: pointer;
-    outline: none;
-    border: none;
-    border-radius: 4px;
-}
-
-.container .choose-player-btn:active{
-    transform: scale(0.98);
-}
-
+/* result section style  */
 .result{
     background-color: #131111;
     position: fixed;
@@ -142,6 +149,9 @@ body{
     border-radius: 5px;
     cursor: pointer;
 }
+/* End result section style  */
+
+/* custom classess  */
 
 .hide{
     display: none;

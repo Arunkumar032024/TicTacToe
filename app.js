@@ -1,8 +1,4 @@
-let btns = document.querySelectorAll(".buttons button"),
-resetBtn = document.querySelector(".restart"),
-turnX = true,
-[player1, player2] = ["", ""],
-[player1Score, player2Score] = [0, 0];
+// initialize constant variables
 const winPatterns = [
     [0, 1, 2],
     [3, 4, 5],
@@ -12,15 +8,42 @@ const winPatterns = [
     [2, 5, 8],
     [0, 4, 8],
     [2, 4, 6]
-],
-player = document.querySelector(".symbol-box .turn"),
-choosePlayerBtn = document.querySelector(".choose-player-btn"),
-resultBox = document.querySelector(".result"),
-continueBtns = document.querySelectorAll(".continue"),
-restartBtn = document.querySelector("#restart");
+];
+const player = document.querySelector(".symbol-box .turn");
+const btns = document.querySelectorAll(".buttons button");
+const resetBtn = document.querySelector(".restart");
+const choosePlayerBtn = document.querySelector(".choose-player-btn");
+const resultBox = document.querySelector(".result");
+const continueBtns = document.querySelectorAll(".continue");
+const restartBtn = document.querySelector("#restart");
+
+// initialize variables
+let turnX = true;
+let [player1, player2] = ["", ""];
+let [player1Score, player2Score] = [0, 0];
 let tie = 0;
 let tieScore = 0;
 
+// add event on choose player to start the game 
+choosePlayerBtn.addEventListener("click", () => {
+    player1 = prompt("Enter the first player name: ");
+    player2 = prompt("Enter the second player name: ");
+    console.log(player1, player2)
+    if(player1 != "" && player2 != ""){
+        document.querySelector("#user-1").innerText = player1;
+        document.querySelector("#user-2").innerText = player2;
+        btns.forEach(btn => { btn.classList.remove("pointer-none") });
+        document.querySelector(".c-1").classList.remove("pointer-none");
+        choosePlayerBtn.style.display = "none"
+        document.querySelector(".symbol-box .player-turn").classList.remove("hide");
+        player.innerText = player1;
+        btnEnabled();
+    }else{
+        alert("Please choose player.")
+    }   
+})
+
+// iterate each button 
 btns.forEach( btn => {
     btn.addEventListener("click", ()=>{
         if(turnX){
@@ -45,7 +68,7 @@ btns.forEach( btn => {
    })
 })
 
-
+// define checkWinner() function to check who is winner 
 function checkWinner(){
     for(let pattern of winPatterns){
         let pos1Val = btns[pattern[0]].innerText;
@@ -75,26 +98,7 @@ function checkWinner(){
     tie++;
 }
 
-choosePlayerBtn.addEventListener("click", () => {
-    player1 = prompt("Enter the first player name: ");
-    player2 = prompt("Enter the second player name: ");
-    console.log(player1, player2)
-    if(player1 != "" && player2 != ""){
-        document.querySelector("#user-1").innerText = player1;
-        document.querySelector("#user-2").innerText = player2;
-        btns.forEach(btn => { btn.classList.remove("pointer-none") });
-        document.querySelector(".c-1").classList.remove("pointer-none");
-        choosePlayerBtn.style.display = "none"
-        document.querySelector(".symbol-box .player-turn").classList.remove("hide");
-        player.innerText = player1;
-        btnEnabled();
-    }else{
-        alert("Please choose player.")
-    }   
-})
-
-
-
+// define the winnerAnnouncement() function that is announce the result 
 function winnerAnnouncement(winner){
         showWinner(winner)   
         if(winner !== "Tie"){
@@ -104,16 +108,9 @@ function winnerAnnouncement(winner){
             let speech = new SpeechSynthesisUtterance(`Game was ${winner}`);
             window.speechSynthesis.speak(speech);
         }
-        
 }
 
-function btnDisabled(){
-    btns.forEach(btn => {
-        btn.disabled = true;
-        btn.classList.add("pointer-none")
-    })
-}
-
+// define showWinner() function to show the result 
 function showWinner(winner){
     if(winner !== "Tie"){
         resultBox.classList.remove('hide');
@@ -122,10 +119,24 @@ function showWinner(winner){
         resultBox.classList.remove('hide');
         resultBox.querySelector(".restart").classList.add("hide")
         resultBox.querySelector('h3').innerText = `Game was ${winner}!`;
-    }
-    
+    }   
 }
 
+// define updateScore() function to updateScore the score of players 
+function updateScore(p1, p2){
+    document.querySelector("#user-1-score").innerText = p1;
+    document.querySelector("#user-2-score").innerText = p2;
+}
+
+// define btnDisabled() function to disabled each btn 
+function btnDisabled(){
+    btns.forEach(btn => {
+        btn.disabled = true;
+        btn.classList.add("pointer-none")
+    })
+}
+
+// define btnEnabled() function to enable each btn 
 function btnEnabled(){
     btns.forEach(btn => {
         btn.disabled = false;
@@ -134,6 +145,8 @@ function btnEnabled(){
     })
 }
 
+
+// iterate both continue button and add event on both. 
 continueBtns.forEach(conBtn => {
     conBtn.addEventListener('click', ()=>{
         resultBox.classList.add("hide");
@@ -143,6 +156,7 @@ continueBtns.forEach(conBtn => {
     })
 })
 
+// add event on resetbtn to reset the game and score 
 resetBtn.addEventListener("click", ()=>{
     let ans = confirm("If you restart the game your score will be 0:")
     if(ans){
@@ -165,8 +179,4 @@ resetBtn.addEventListener("click", ()=>{
     }
 })
 
-function updateScore(p1, p2){
-    document.querySelector("#user-1-score").innerText = p1;
-    document.querySelector("#user-2-score").innerText = p2;
-}
 

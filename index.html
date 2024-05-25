@@ -12,14 +12,24 @@
     <link rel="stylesheet" href="app.css" />
 </head>
 <body>
+
+    <!-- game section  -->
     <div class="container">
         <h1>Tic Tac Toe</h1>
+        <!-- player turn section  -->
         <div class="symbol-box">
+            <!-- declare color code of players -->
             <p><span class="x">X</span> <span class="o">O</span></p>
+
+            <!-- declare the turn of player  -->
             <p class="player-turn hide"><span class="turn"></span>'s Turn</p>
+
+            <!-- control button  -->
             <button class="continue c-1 pointer-none"><i class="fa-solid fa-arrow-rotate-right"></i></button>
         </div>
+        <!-- End player turn section  -->
 
+        <!-- button section  -->
         <div class="buttons">
             <button value="1" class="pointer-none"></button>
             <button value="2" class="pointer-none"></button>
@@ -31,22 +41,33 @@
             <button value="8" class="pointer-none"></button>
             <button value="9" class="pointer-none"></button>
         </div>
+        <!-- End button section  -->
 
+        <!-- control section -->
         <div class="controls">
             <button class="pointer-none"><p>X <span id="user-1">player1</span></p><span id="user-1-score">0</span></button>
             <button class="pointer-none tie-btn"><p><span id="tie">Ties</span></p><span id="tie-score">0</span></button>
             <button class="pointer-none"><p>O <span id="user-2">player2</span></p><span id="user-2-score">0</span></button>
         </div>
+        <!-- End control section -->
+
+        <!-- started button  -->
         <button class="choose-player-btn">Choose Player</button>
     </div>
+    <!-- End game section  -->
 
+    <!-- result section -->
     <div class="result hide">
+        <!-- show result  -->
         <h3>Congratulation player</h3>
+
+        <!-- controls button  -->
         <div class="btns">
             <button class="continue c-2"><i class="fa-solid fa-arrow-rotate-right"></i></button>
             <button class="restart"><i class="fa-solid fa-power-off"></i></button>
         </div>
     </div>
+    <!-- End result section -->
     <!-- js file -->
     <script src="app.js"></script>
 </body>
