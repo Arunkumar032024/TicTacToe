@@ -92,11 +92,11 @@ body{
 .controls button:nth-child(1){
     color: #ffff80;
 }
-/* .controls button:nth-child(2){
+.controls button:nth-child(2){
     color: #fff;
     text-transform: uppercase;
-} */
-.controls button:nth-child(2){
+}
+.controls button:nth-child(3){
     color: #ff0080;
 }
 

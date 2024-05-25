@@ -15,3 +15,5 @@ Add continue button feature
 Add restart btn feature
 <br>
 Add update score feature
+<br>
+Add game tie feature

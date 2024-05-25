@@ -18,7 +18,8 @@ choosePlayerBtn = document.querySelector(".choose-player-btn"),
 resultBox = document.querySelector(".result"),
 continueBtns = document.querySelectorAll(".continue"),
 restartBtn = document.querySelector("#restart");
-
+let tie = 0;
+let tieScore = 0;
 
 btns.forEach( btn => {
     btn.addEventListener("click", ()=>{
@@ -35,6 +36,12 @@ btns.forEach( btn => {
         }
         btn.disabled = true;
         checkWinner();
+        if(tie === 9){
+            tieScore++;
+            document.querySelector(".controls #tie-score").innerText = tieScore;
+            tie = 0;
+            winnerAnnouncement("Tie")
+        }
    })
 })
 
@@ -50,16 +57,22 @@ function checkWinner(){
                     winnerAnnouncement(player1);
                     player1Score++;
                     updateScore(player1Score, player2Score)
+                    btnDisabled();
+                    tie = 0;
+                    return;
                 }else{
                     winnerAnnouncement(player2);
                     player2Score++;
                     updateScore(player1Score, player2Score)
+                    btnDisabled();
+                    tie = 0;
+                    return;
                 }
-                btnDisabled();
-            }else{
+                
             }
         }
     }
+    tie++;
 }
 
 choosePlayerBtn.addEventListener("click", () => {
@@ -84,8 +97,14 @@ choosePlayerBtn.addEventListener("click", () => {
 
 function winnerAnnouncement(winner){
         showWinner(winner)   
-        let speech = new SpeechSynthesisUtterance(`Congratulation ${winner}`);
-        window.speechSynthesis.speak(speech);
+        if(winner !== "Tie"){
+            let speech = new SpeechSynthesisUtterance(`Congratulation ${winner}`);
+            window.speechSynthesis.speak(speech);
+        }else{
+            let speech = new SpeechSynthesisUtterance(`Game was ${winner}`);
+            window.speechSynthesis.speak(speech);
+        }
+        
 }
 
 function btnDisabled(){
@@ -101,6 +120,7 @@ function showWinner(winner){
         resultBox.querySelector('h3').innerText = `Congratulation ${winner}!`;
     }else{
         resultBox.classList.remove('hide');
+        resultBox.querySelector(".restart").classList.add("hide")
         resultBox.querySelector('h3').innerText = `Game was ${winner}!`;
     }
     
@@ -117,7 +137,9 @@ function btnEnabled(){
 continueBtns.forEach(conBtn => {
     conBtn.addEventListener('click', ()=>{
         resultBox.classList.add("hide");
+        resultBox.querySelector(".restart").classList.remove("hide")
         btnEnabled();
+        tie = 0;
     })
 })
 
@@ -135,6 +157,9 @@ resetBtn.addEventListener("click", ()=>{
         player1 = ""
         player2 = ""
         document.querySelector(".symbol-box .player-turn").classList.add("hide");
+        tie = 0;
+        tieScore = 0;
+        document.querySelector(".controls #tie-score").innerText = tieScore;
         document.querySelector("#user-1").innerText = "player1"
         document.querySelector("#user-2").innerText = "player2";
     }
